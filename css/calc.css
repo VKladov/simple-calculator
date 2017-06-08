@@ -1,0 +1,87 @@
+body{
+    font-family: OpenSans, sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+}
+
+.calc{
+    position: relative;
+    max-width: 300px;
+    margin: 200px auto;
+    border: 1px solid #ddd;
+    font-weight: bold;
+}
+.calc,
+.calc *{
+    box-sizing: border-box;
+}
+.calc__inner{
+    padding: 10px;
+    background-color: #fff;
+}
+.calc__row{
+    margin-left: -5px;
+    margin-right: -5px;
+    margin-bottom: 10px;
+}
+.calc__row:last-child{
+    margin-bottom: 0;
+}
+.calc__row::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.calc__btn{
+    float: left;
+    width: 25%;
+    padding: 0 5px;
+}
+.calc__input-block{
+    padding: 0 5px;
+}
+.calc__input{
+    border: 1px solid #ddd;
+    height: 40px;
+    padding: 5px;
+    font-size: 20px;
+    width: 100%;
+    transition: .5s;
+}
+.calc__input.success{
+    border-color: #cbad33;
+    box-shadow: inset 0 0 5px #ffdb4d;
+    background-color: #fffae8;
+}
+.calc__input.error{
+    border-color: brown;
+}
+.calc__input:focus{
+    outline: none;
+}
+.calc .btn{
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    text-align: center;
+    padding: 10px 15px;
+    background-color: #fff;
+    cursor: pointer;
+    user-select: none;
+}
+.calc .btn:hover{
+    background-color: #f5f5f5;
+}
+.calc .btn:active{
+    background-color: #f5f5f5;
+    box-shadow: inset 0 1px 4px rgba(0,0,0,.1);
+}
+.calc .btn.btn_color{
+    background-color: #ffdb4d;
+    border-color: #cbad33;
+}
+.calc .btn.btn_color:hover{
+    background-color: #f3cd36;
+}

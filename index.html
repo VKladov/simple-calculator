@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/calc.css">
+</head>
+<body>
+    <div class="calc" id="my-calculator">
+        <div class="calc__inner">
+            <div class="calc__row">
+                <div class="calc__input-block"><input type="text" name="calc-text" class="calc__input"></div>
+            </div>
+            <div class="calc__row">
+                <div class="calc__btn"><span class="btn" data-type="symbol">(</span></div>
+                <div class="calc__btn"><span class="btn" data-type="symbol">)</span></div>
+                <div class="calc__btn"><span class="btn" data-type="symbol">,</span></div>
+                <div class="calc__btn"><span class="btn" data-type="symbol">*</span></div>
+            </div>
+            <div class="calc__row">
+                <div class="calc__btn"><span class="btn" data-type="symbol">7</span></div>
+                <div class="calc__btn"><span class="btn" data-type="symbol">8</span></div>
+                <div class="calc__btn"><span class="btn" data-type="symbol">9</span></div>
+                <div class="calc__btn"><span class="btn" data-type="symbol">/</span></div>
+            </div>
+            <div class="calc__row">
+                <div class="calc__btn"><span class="btn" data-type="symbol">4</span></div>
+                <div class="calc__btn"><span class="btn" data-type="symbol">5</span></div>
+                <div class="calc__btn"><span class="btn" data-type="symbol">6</span></div>
+                <div class="calc__btn"><span class="btn" data-type="symbol">+</span></div>
+            </div>
+            <div class="calc__row">
+                <div class="calc__btn"><span class="btn" data-type="symbol">1</span></div>
+                <div class="calc__btn"><span class="btn" data-type="symbol">2</span></div>
+                <div class="calc__btn"><span class="btn" data-type="symbol">3</span></div>
+                <div class="calc__btn"><span class="btn" data-type="symbol">-</span></div>
+            </div>
+            <div class="calc__row">
+                <div class="calc__btn"><span class="btn" data-type="symbol">0</span></div>
+                <div class="calc__btn"><span class="btn" data-type="action">C</span></div>
+                <div class="calc__btn"><span class="btn" data-type="action">CE</span></div>
+                <div class="calc__btn"><span class="btn btn_color calc-result-btn" data-type="action">=</span></div>
+            </div>
+        </div>
+    </div>
+    <script src="libs/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="js/calc.js" type="text/javascript"></script>
+</body>
+</html>
