@@ -7,17 +7,17 @@ function Calculator(el){
     
     this.el = el;
     this._init();
-}
+};
 Calculator.prototype._init = function(){
     this.input = this.el.querySelector('input.calc__input');
     this.btnsNum = this.el.querySelectorAll('.btn[data-type="symbol"]');
     this.btnsAction = this.el.querySelectorAll('.btn[data-type="action"]');
     this.resultBtn = this.el.querySelector('.calc-result-btn');
     this.caretPosition = {start: 0, end: 0};
-    this.charts = '0123456789/*()+-,';
+    this.charts = '0123456789e/*()+-,';
     
     this._initEvents();
-}
+};
 Calculator.prototype._initEvents = function(){
     var _this = this;
     
@@ -51,7 +51,7 @@ Calculator.prototype._initEvents = function(){
     $(this.input).on('focus', function(){
         _this._setCaretPosition(_this.input.value.length, _this.input.value.length);
     });
-}
+};
 Calculator.prototype._addSymbol = function(value){
     var position = this.caretPosition,
         start = position.start,
@@ -67,7 +67,7 @@ Calculator.prototype._addSymbol = function(value){
     this._setCaretPosition(position.start + 1, position.start + 1);
     
     
-}
+};
 Calculator.prototype._addAction = function(a){
     var action;
     switch (a) {
@@ -79,10 +79,10 @@ Calculator.prototype._addAction = function(a){
             break;
     }
     
-}
+};
 Calculator.prototype._clearInput = function() {
     this.input.value = '';
-}
+};
 Calculator.prototype._deleteSymbol = function() {
     var position = this.caretPosition,
         start = position.start,
@@ -96,16 +96,18 @@ Calculator.prototype._deleteSymbol = function() {
     } else {
         if (start === end) {
             this.input.value = oldValue.substr(0, start - 1) + oldValue.substr(end, oldValue.length - start);
+            this._setCaretPosition(position.start - 1, position.start - 1);
         } else {
             this.input.value = oldValue.substr(0, start) + oldValue.substr(end, oldValue.length - start);
+            this._setCaretPosition(position.start, position.start);
         }
         
-        this._setCaretPosition(position.start, position.start);
+        
     }
     
     this.input.focus();
     
-}
+};
 Calculator.prototype._getCaretPosition = function() {
     var ctrl = this.input;
     
@@ -122,7 +124,7 @@ Calculator.prototype._getCaretPosition = function() {
 	} else {
 		return {'start': 0, 'end': 0};
 	}
-}
+};
 Calculator.prototype._setCaretPosition = function(start, end) {
 	var ctrl = this.input;
 	if(ctrl.setSelectionRange)
@@ -137,7 +139,7 @@ Calculator.prototype._setCaretPosition = function(start, end) {
 		range.moveStart('character', start);
 		range.select();
 	}
-}
+};
 Calculator.prototype._resultAction = function(){
     var value = this.input.value + '',
         _this = this,
@@ -148,21 +150,22 @@ Calculator.prototype._resultAction = function(){
         this.input.value = result;
         $(this.input).addClass('success');
         setTimeout(function(){ $(_this.input).removeClass('success'); }, 500);
+        
+        this.caretPosition = {start: result.length, end: result.length};
+        this._setCaretPosition(result.length, result.length);
     }else{
         $(this.input).addClass('error');
         setTimeout(function(){ $(_this.input).removeClass('error'); }, 500);
     }
-}
+    
+};
 
 function calculate(string){
-    var result = 'res';
-    
-    if(string.split('(').length != string.split(')').length){
-        return false;
-    }
+    var result;
     
     string = string.replace(',','.');
-    try{
+    
+    try{ 
         result = eval(string);
     }catch(err){
         return false;
@@ -170,5 +173,6 @@ function calculate(string){
     
     
     result = result.toString().replace('.', ',');
+    
     return result;
-}
+};
